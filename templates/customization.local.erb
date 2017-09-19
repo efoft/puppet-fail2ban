@@ -1,0 +1,23 @@
+[<%= @name %>]
+enabled = <%= @enabled %>
+<% if @port -%>
+port    = <%= @port.join(',') %>
+<% end -%>
+<% if @logpath -%>
+logpath = <%= @logpath %>
+<% end -%>
+<% if @backend -%>
+backend = <%= @backend %>
+<% end -%>
+<% if @bantime -%>
+backend = <%= @bantime %>
+<% end -%>
+<% if @maxretry -%>
+backend = <%= @maxretry %>
+<% end -%>
+<% if @filter -%>
+backend = <%= @filter %>
+<% end -%>
+<% if @action -%>
+backend = <%= @action %>
+<% end -%>
