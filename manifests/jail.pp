@@ -1,13 +1,19 @@
+# === Define fail2ban::jail ===
+# Configures specific built-in or custom jail.
+# For built-in jail minimum config is required (e.g. enabled is enough).
+#
+# === Parameters ===
+# See parameters description in fail2ban.pp
 #
 define fail2ban::jail(
-  $enabled = true,
-  $port    = undef,
-  $logpath = undef,
-  $backend = undef,
-  $bantime = undef,
-  $maxretry = undef,
-  $filter   = undef,
-  $action   = undef,
+  Boolean $enabled                    = true,
+  Optional[Numeric] $port             = undef,
+  Optional[Stdlib::Unixpath] $logpath = undef,
+  Optional[String] $backend           = undef,
+  Optional[Numeric] $bantime          = undef,
+  Optional[Numeric] $maxretry         = undef,
+  Optional[String] $filter            = undef,
+  Optional[String] $action            = undef,
 ) {
 
   include ::fail2ban

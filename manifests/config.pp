@@ -1,6 +1,8 @@
 #
 class fail2ban::config {
 
+  assert_private('This is private class')
+
   file { $fail2ban::params::jail_d_path:
     ensure  => $fail2ban::ensure ? { 'present' => 'directory', default => $fail2ban::ensure },
     recurse => true,
