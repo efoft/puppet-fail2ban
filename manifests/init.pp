@@ -54,7 +54,7 @@
 #
 class fail2ban (
   Enum['present','absent'] $ensure                = 'present',
-  Optional[Array[Stdlib::Compat::Ipv4]] $ignoreip = undef,
+  Optional[Array[Stdlib::Ip::Address]] $ignoreip  = undef,
   Optional[Numeric] $bantime                      = undef,
   Optional[Numeric] $findtime                     = undef,
   Optional[Numeric] $maxretry                     = undef,
