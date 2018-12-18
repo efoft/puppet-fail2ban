@@ -1,0 +1,42 @@
+# Fail2ban custom filter
+# Managed by Puppet
+
+[Init]
+<% if @journalmatch -%>
+<% journalmatch_1st_line = @journalmatch[0] -%>
+<% journalmatch_the_rest = @journalmatch[1..-1] -%>
+journalmatch = <%= journalmatch_1st_line %>
+<% journalmatch_the_rest.each do |journalmatch_line| -%>
+               <%= journalmatch_line %>
+<% end -%>
+<% end -%>
+<% if @includes -%>
+
+[INCLUDES]
+<% @includes.each do |include_line| -%>
+<%= include_line %> 
+<% end -%>
+<% end -%>
+
+[Definition]
+<% if @definition_prepend -%>
+<% @definition_prepend.each do |prepend_line| -%>
+<%= prepend_line %>
+<% end -%>
+<% end -%>
+
+<% failregex_1st_line = @failregex[0] -%>
+<% failregex_the_rest = @failregex[1..-1] -%>
+failregex = <%= failregex_1st_line %>
+<% failregex_the_rest.each do |failregex_line| -%>
+            <%= failregex_line %>
+<% end -%>
+<% if @ignoreregex -%>
+<% ignoreregex_1st_line = @ignoreregex[0] -%>
+<% ignoreregex_the_rest = @ignoreregex[1..-1] -%>
+
+ignoreregex = <%= ignoreregex_1st_line %>
+<% ignoreregex_the_rest.each do |ignoreregex_line| -%>
+               <%= ignoreregex_line %>
+<% end -%>
+<% end -%>
