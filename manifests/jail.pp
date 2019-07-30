@@ -19,8 +19,10 @@ define fail2ban::jail(
 
   include ::fail2ban
 
-  file { "$fail2ban::params::jail_d_path/${title}.local":
-    content => template('fail2ban/custom_jail.local.erb'),
-    notify  => Service[$fail2ban::params::service_name],
+  if $fail2ban::ensure == 'present' {
+    file { "$fail2ban::params::jail_d_path/${title}.local":
+      content => template('fail2ban/custom_jail.local.erb'),
+      notify  => Service[$fail2ban::params::service_name],
+    }
   }
 }
