@@ -1,6 +1,6 @@
 [DEFAULT]
 <% if @ignoreip -%>
-ignoreip = <% @ignoreip.join(', ') %>
+ignoreip = <%= @ignoreip.join(', ') %>
 <% end -%>
 <% if @bantime -%>
 bantime  = <%= @bantime %>

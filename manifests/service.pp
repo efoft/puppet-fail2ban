@@ -1,10 +1,10 @@
 #
-class fail2ban::service {
+class fail2ban::service inherits fail2ban {
 
   assert_private('This is private class')
 
-  service { $fail2ban::params::service_name:
-    ensure => $fail2ban::ensure ? { 'present' => 'running', 'absent' => undef },
-    enable => $fail2ban::ensure ? { 'present' => true, 'absent' => undef },
+  service { $service_name:
+    ensure => $ensure ? { 'present' => 'running', 'absent' => undef },
+    enable => $ensure ? { 'present' => true, 'absent' => undef },
   }
 }
