@@ -1,16 +1,16 @@
 #
-class fail2ban::config {
+class fail2ban::config inherits fail2ban {
 
   assert_private('This is private class')
 
-  file { $fail2ban::params::jail_d_path:
-    ensure  => $fail2ban::ensure ? { 'present' => 'directory', default => $fail2ban::ensure },
+  file { $jail_d_path:
+    ensure  => $ensure ? { 'present' => 'directory', default => $ensure },
     recurse => true,
     purge   => true,
   }
 
-  file { $fail2ban::params::cfgfile:
-    ensure  => $fail2ban::ensure,
+  file { $cfgfile:
+    ensure  => $ensure,
     content => template('fail2ban/jail.local.erb'),
   }
 }
