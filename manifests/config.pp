@@ -7,6 +7,7 @@ class fail2ban::config inherits fail2ban {
     ensure  => $ensure ? { 'present' => 'directory', default => $ensure },
     recurse => true,
     purge   => true,
+    force   => true,
   }
 
   file { $cfgfile:
