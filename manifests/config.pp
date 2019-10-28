@@ -1,8 +1,6 @@
 #
 class fail2ban::config inherits fail2ban {
 
-  assert_private('This is private class')
-
   file { $jail_d_path:
     ensure  => $ensure ? { 'present' => 'directory', default => $ensure },
     recurse => true,
