@@ -5,9 +5,9 @@ class fail2ban::config inherits fail2ban {
 
   file { $jail_d_path:
     ensure  => $ensure ? { 'present' => 'directory', default => $ensure },
-    recurse => true,
-    purge   => true,
-    force   => true,
+    recurse => $fail2ban::purge_unmanaged_jails,
+    purge   => $fail2ban::purge_unmanaged_jails,
+    force   => $fail2ban::purge_unmanaged_jails,
   }
 
   file { $cfgfile:

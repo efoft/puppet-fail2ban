@@ -4,6 +4,9 @@
 # [*ignoreip*]
 #   Array of IP that must not be banned.
 #
+# [*purge_unmanaged_jails*]
+#   If to purge files in jail.d directory that are not created with puppet.
+#
 # [*bantime*]
 #   Time in second after with banned IP is removed from blacklist.
 #
@@ -54,6 +57,7 @@
 #
 class fail2ban (
   Enum['present','absent'] $ensure                = 'present',
+  Boolean                  $purge_unmanaged_jails = false,
   Optional[Array[Stdlib::Ip::Address]] $ignoreip  = undef,
   Optional[Numeric] $bantime                      = undef,
   Optional[Numeric] $findtime                     = undef,
